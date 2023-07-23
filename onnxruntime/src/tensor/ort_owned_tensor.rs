@@ -5,7 +5,7 @@ use std::{fmt::Debug, ops::Deref};
 use ndarray::{Array, ArrayView};
 use tracing::debug;
 
-use onnxruntime_sys as sys;
+use onnxruntime_sys_ng as sys;
 
 use crate::{
     error::status_to_result, g_ort, memory::MemoryInfo, tensor::ndarray_tensor::NdArrayTensor,

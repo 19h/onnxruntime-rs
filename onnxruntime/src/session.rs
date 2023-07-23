@@ -13,7 +13,7 @@ use std::env;
 use ndarray::Array;
 use tracing::{debug, error};
 
-use onnxruntime_sys as sys;
+use onnxruntime_sys_ng as sys;
 
 use crate::{
     char_p_to_string,
@@ -601,7 +601,7 @@ unsafe fn get_tensor_dimensions(
         .then(|| ())
         .ok_or(OrtError::InvalidDimensions)?;
 
-    let mut node_dims: Vec<i64> = vec![0; num_dims as usize];
+    let mut node_dims: Vec<i64> = vec![0; num_dims];
     let status = g_ort().GetDimensions.unwrap()(
         tensor_info_ptr,
         node_dims.as_mut_ptr(), // FIXME: UB?
@@ -734,11 +734,11 @@ mod dangerous {
         status_to_result(status).map_err(OrtError::CastTypeInfoToTensorInfo)?;
         assert_not_null_pointer(tensor_info_ptr, "TensorInfo")?;
 
-        let mut type_sys = sys::ONNXTensorElementDataType::ONNX_TENSOR_ELEMENT_DATA_TYPE_UNDEFINED;
+        let mut type_sys = sys::ONNXTensorElementDataType_ONNX_TENSOR_ELEMENT_DATA_TYPE_UNDEFINED;
         let status =
             unsafe { g_ort().GetTensorElementType.unwrap()(tensor_info_ptr, &mut type_sys) };
         status_to_result(status).map_err(OrtError::TensorElementType)?;
-        (type_sys != sys::ONNXTensorElementDataType::ONNX_TENSOR_ELEMENT_DATA_TYPE_UNDEFINED)
+        (type_sys != sys::ONNXTensorElementDataType_ONNX_TENSOR_ELEMENT_DATA_TYPE_UNDEFINED)
             .then(|| ())
             .ok_or(OrtError::UndefinedTensorElementType)?;
         // This transmute should be safe since its value is read from GetTensorElementType which we must trust.

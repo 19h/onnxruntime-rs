@@ -5,8 +5,9 @@ use std::{
     sync::{atomic::AtomicPtr, Arc, Mutex},
 };
 
-use lazy_static::lazy_static;
 use tracing::{debug, error, warn};
+
+use lazy_static::lazy_static;
 
 use onnxruntime_sys_ng as sys;
 

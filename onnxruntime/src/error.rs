@@ -4,7 +4,7 @@ use std::{io, path::PathBuf};
 
 use thiserror::Error;
 
-use onnxruntime_sys as sys;
+use onnxruntime_sys_ng as sys;
 
 use crate::{char_p_to_string, g_ort};
 

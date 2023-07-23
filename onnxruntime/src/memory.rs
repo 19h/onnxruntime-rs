@@ -1,6 +1,6 @@
 use tracing::debug;
 
-use onnxruntime_sys as sys;
+use onnxruntime_sys_ng as sys;
 
 use tracing::error;
 

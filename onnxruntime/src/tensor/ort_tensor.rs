@@ -5,7 +5,7 @@ use std::{ffi, fmt::Debug, ops::Deref};
 use ndarray::Array;
 use tracing::{debug, error};
 
-use onnxruntime_sys as sys;
+use onnxruntime_sys_ng as sys;
 
 use crate::{
     error::{assert_not_null_pointer, call_ort, status_to_result},
