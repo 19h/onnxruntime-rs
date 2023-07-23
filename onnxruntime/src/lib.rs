@@ -10,7 +10,7 @@
 //! > ONNX Runtime is a cross-platform, high performance ML inferencing and training accelerator.
 //!
 //! The (highly) unsafe [C API](https://github.com/microsoft/onnxruntime/blob/master/include/onnxruntime/core/session/onnxruntime_c_api.h)
-//! is wrapped using bindgen as [`onnxruntime-sys`](https://crates.io/crates/onnxruntime-sys).
+//! is wrapped using bindgen as [`onnxruntime-sys-ng`](https://crates.io/crates/onnxruntime-sys).
 //!
 //! The unsafe bindings are wrapped in this crate to expose a safe API.
 //!

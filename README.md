@@ -11,7 +11,7 @@ This is an attempt at a Rust wrapper for
 
 This project consist on two crates:
 
-- [`onnxruntime-sys`](onnxruntime-sys): Low-level binding to the C API;
+- [`onnxruntime-sys`](onnxruntime-sys-ng): Low-level binding to the C API;
 - [`onnxruntime`](onnxruntime): High-level and safe API.
 
 [Changelog](CHANGELOG.md)
@@ -104,7 +104,7 @@ was ported to both the low level crate (`onnxruntime-sys`) and the high level on
 
 ### onnxruntime-sys
 
-To run this example ([`onnxruntime-sys/examples/c_api_sample.rs`](onnxruntime-sys/examples/c_api_sample.rs)):
+To run this example ([`onnxruntime-sys/examples/c_api_sample.rs`](onnxruntime-sys-ng/examples/c_api_sample.rs)):
 
 ```sh
 # Download the model (SqueezeNet 1.0, ONNX version: 1.3, Opset version: 8)
@@ -222,7 +222,7 @@ rustup component add rustfmt
 Then on each platform build with the proper feature flag:
 
 ```sh
-❯ cd onnxruntime-sys
+❯ cd onnxruntime-sys-ng
 ❯ cargo build --features generate-bindings
 ```
 
@@ -241,7 +241,7 @@ Generate the bindings:
 
 ```sh
 ❯ docker exec -it --user "$(id -u)":"$(id -g)" rustbuilder /bin/bash
-❯ cd onnxruntime-sys
+❯ cd onnxruntime-sys-ng
 ❯ cargo build --features 'generate-bindings, cuda'
 ```
 
@@ -254,7 +254,7 @@ Windows can build both x86 and x86_64 bindings:
 
 ```sh
 ❯ rustup target add i686-pc-windows-msvc x86_64-pc-windows-msvc
-❯ cd onnxruntime-sys
+❯ cd onnxruntime-sys-ng
 ❯ cargo build --features 'generate-bindings, cuda' --target i686-pc-windows-msvc
 ❯ cargo build --features 'generate-bindings, cuda' --target x86_64-pc-windows-msvc
 ```

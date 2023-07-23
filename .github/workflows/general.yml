@@ -4,7 +4,7 @@ on: [pull_request]
 
 env:
   CARGO_TERM_COLOR: always
-  RUST_LOG: onnxruntime=debug,onnxruntime-sys=debug
+  RUST_LOG: onnxruntime=debug,onnxruntime-sys-ng=debug
   RUST_BACKTRACE: 1
 
 jobs:
@@ -45,7 +45,7 @@ jobs:
           command: build
           args: --target x86_64-unknown-linux-gnu
       - name: Verify prebuilt archive downloaded (CPU, x86_64-unknown-linux-gnu)
-        run: ls -lh target/x86_64-unknown-linux-gnu/debug/build/onnxruntime-sys-*/out/onnxruntime-linux-x64-1.*.tgz
+        run: ls -lh target/x86_64-unknown-linux-gnu/debug/build/onnxruntime-sys-ng-*/out/onnxruntime-linux-x64-1.*.tgz
       # ******************************************************************
       - name: Download prebuilt archive (CPU, x86_64-apple-darwin)
         uses: actions-rs/cargo@v1
@@ -53,7 +53,7 @@ jobs:
           command: build
           args: --target x86_64-apple-darwin
       - name: Verify prebuilt archive downloaded (CPU, x86_64-apple-darwin)
-        run: ls -lh target/x86_64-apple-darwin/debug/build/onnxruntime-sys-*/out/onnxruntime-osx-x64-1.*.tgz
+        run: ls -lh target/x86_64-apple-darwin/debug/build/onnxruntime-sys-ng-*/out/onnxruntime-osx-x64-1.*.tgz
       # ******************************************************************
       - name: Download prebuilt archive (CPU, i686-pc-windows-msvc)
         uses: actions-rs/cargo@v1
@@ -61,7 +61,7 @@ jobs:
           command: build
           args: --target i686-pc-windows-msvc
       - name: Verify prebuilt archive downloaded (CPU, i686-pc-windows-msvc)
-        run: ls -lh target/i686-pc-windows-msvc/debug/build/onnxruntime-sys-*/out/onnxruntime-win-x86-1.*.zip
+        run: ls -lh target/i686-pc-windows-msvc/debug/build/onnxruntime-sys-ng-*/out/onnxruntime-win-x86-1.*.zip
       # ******************************************************************
       - name: Download prebuilt archive (CPU, x86_64-pc-windows-msvc)
         uses: actions-rs/cargo@v1
@@ -69,7 +69,7 @@ jobs:
           command: build
           args: --target x86_64-pc-windows-msvc
       - name: Verify prebuilt archive downloaded (CPU, x86_64-pc-windows-msvc)
-        run: ls -lh target/x86_64-pc-windows-msvc/debug/build/onnxruntime-sys-*/out/onnxruntime-win-x64-1.*.zip
+        run: ls -lh target/x86_64-pc-windows-msvc/debug/build/onnxruntime-sys-ng-*/out/onnxruntime-win-x64-1.*.zip
       # ******************************************************************
       - name: Download prebuilt archive (GPU, x86_64-unknown-linux-gnu)
         uses: actions-rs/cargo@v1
@@ -79,7 +79,7 @@ jobs:
           command: build
           args: --target x86_64-unknown-linux-gnu
       - name: Verify prebuilt archive downloaded (GPU, x86_64-unknown-linux-gnu)
-        run: ls -lh target/x86_64-unknown-linux-gnu/debug/build/onnxruntime-sys-*/out/onnxruntime-linux-x64-gpu-1.*.tgz
+        run: ls -lh target/x86_64-unknown-linux-gnu/debug/build/onnxruntime-sys-ng-*/out/onnxruntime-linux-x64-gpu-1.*.tgz
       # ******************************************************************
       - name: Download prebuilt archive (GPU, x86_64-pc-windows-msvc)
         uses: actions-rs/cargo@v1
@@ -89,7 +89,7 @@ jobs:
           command: build
           args: --target x86_64-pc-windows-msvc
       - name: Verify prebuilt archive downloaded (GPU, x86_64-pc-windows-msvc)
-        run: ls -lh target/x86_64-pc-windows-msvc/debug/build/onnxruntime-sys-*/out/onnxruntime-win-gpu-x64-1.*.zip
+        run: ls -lh target/x86_64-pc-windows-msvc/debug/build/onnxruntime-sys-ng-*/out/onnxruntime-win-gpu-x64-1.*.zip
 
   test:
     name: Test Suite
@@ -143,11 +143,11 @@ jobs:
           command: build
           # Use --manifest-path instead of --package. See https://github.com/actions-rs/cargo/issues/86
           args: --manifest-path onnxruntime/Cargo.toml --features model-fetching
-      - name: Test onnxruntime-sys
+      - name: Test onnxruntime-sys-ng
         uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --package onnxruntime-sys -- --test-threads=1 --nocapture
+          args: --package onnxruntime-sys-ng -- --test-threads=1 --nocapture
       - name: Test onnxruntime
         uses: actions-rs/cargo@v1
         with:
@@ -186,9 +186,9 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --package onnxruntime-sys
+          args: --package onnxruntime-sys-ng
       - name: Copy libonnxruntime.*.dylib to /usr/lib/
-        run: sudo cp -r target/debug/build/onnxruntime-sys-*/out/onnxruntime/onnxruntime-*/lib/libonnxruntime.* /usr/lib/
+        run: sudo cp -r target/debug/build/onnxruntime-sys-ng-*/out/onnxruntime/onnxruntime-*/lib/libonnxruntime.* /usr/lib/
       - name: Run cargo-tarpaulin
         uses: actions-rs/tarpaulin@v0.1
         with:

@@ -1,8 +1,7 @@
 [package]
-authors = ["Nicolas Bigaouette <nbigaouette@gmail.com>"]
-edition = "2018"
-name = "onnxruntime"
-version = "0.0.14"
+authors = ["Nicolas Bigaouette <nbigaouette@gmail.com>", "Kenan Sulayman <kenan@sly.mn>"]
+name = "onnxruntime-ng"
+version = "1.15.1"
 
 description = "Wrapper around Microsoft's ONNX Runtime"
 documentation = "https://docs.rs/onnxruntime"
@@ -19,7 +18,7 @@ name = "integration_tests"
 required-features = ["model-fetching"]
 
 [dependencies]
-onnxruntime-sys = { version = "0.0.14", path = "../onnxruntime-sys" }
+onnxruntime-sys-ng = { path = "../onnxruntime-sys-ng" }
 
 lazy_static = "1.4"
 ndarray = "0.15"
@@ -30,18 +29,18 @@ tracing = "0.1"
 ureq = { version = "2.1", optional = true }
 
 [dev-dependencies]
-image = "0.23"
-test-env-log = { version = "0.2", default-features = false, features = ["trace"] }
-tracing-subscriber = "0.2"
-ureq = "2.1"
+image = "^0.24.6"
+test-env-log = { version = "^0.2", default-features = false, features = ["trace"] }
+tracing-subscriber = "^0.3.17"
+ureq = "^2.1"
 
 [features]
 # Fetch model from ONNX Model Zoo (https://github.com/onnx/models)
 model-fetching = ["ureq"]
 # Disable build script; used for https://docs.rs
-disable-sys-build-script = ["onnxruntime-sys/disable-sys-build-script"]
-generate-bindings = ["onnxruntime-sys/generate-bindings"]
-cuda = ["onnxruntime-sys/cuda"]
+disable-sys-build-script = ["onnxruntime-sys-ng/disable-sys-build-script"]
+generate-bindings = ["onnxruntime-sys-ng/generate-bindings"]
+cuda = ["onnxruntime-sys-ng/cuda"]
 
 [package.metadata.docs.rs]
 features = ["disable-sys-build-script", "model-fetching"]

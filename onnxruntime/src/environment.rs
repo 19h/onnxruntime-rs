@@ -8,7 +8,7 @@ use std::{
 use lazy_static::lazy_static;
 use tracing::{debug, error, warn};
 
-use onnxruntime_sys as sys;
+use onnxruntime_sys_ng as sys;
 
 use crate::{
     error::{status_to_result, OrtError, Result},

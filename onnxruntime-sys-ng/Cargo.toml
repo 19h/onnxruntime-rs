@@ -1,8 +1,8 @@
 [package]
-authors = ["Nicolas Bigaouette <nbigaouette@elementai.com>"]
+authors = ["Nicolas Bigaouette <nbigaouette@gmail.com>", "Kenan Sulayman <kenan@sly.mn>"]
 edition = "2018"
-name = "onnxruntime-sys"
-version = "0.0.14"
+name = "onnxruntime-sys-ng"
+version = "1.15.1"
 
 description = "Unsafe wrapper around Microsoft's ONNX Runtime"
 documentation = "https://docs.rs/onnxruntime-sys"
@@ -17,15 +17,15 @@ keywords = ["neuralnetworks", "onnx", "bindings"]
 [dependencies]
 
 [build-dependencies]
-bindgen = { version = "0.59", optional = true }
-ureq = "2.1"
+bindgen = { version = "^0.66.1", optional = true }
+ureq = "^2.1"
 
 # Used on Windows
-zip = "0.5"
+zip = "^0.6.6"
 
 # Used on unix
-flate2 = "1.0"
-tar = "0.4"
+flate2 = "^1.0"
+tar = "^0.4"
 
 [features]
 default = []

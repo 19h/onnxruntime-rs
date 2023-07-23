@@ -5,7 +5,7 @@ use std::os::unix::ffi::OsStrExt;
 #[cfg(target_family = "windows")]
 use std::os::windows::ffi::OsStrExt;
 
-use onnxruntime_sys::*;
+use onnxruntime_sys_ng::*;
 
 // https://github.com/microsoft/onnxruntime/blob/v1.4.0/csharp/test/Microsoft.ML.OnnxRuntime.EndToEndTests.Capi/C_Api_Sample.cpp
 
