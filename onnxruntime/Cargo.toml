@@ -4,6 +4,9 @@ name = "onnxruntime-ng"
 edition = "2021"
 version = "1.15.1"
 
+[lib]
+crate-type = ["rlib"]
+
 description = "Wrapper around Microsoft's ONNX Runtime"
 documentation = "https://docs.rs/onnxruntime"
 homepage = "https://github.com/nbigaouette/onnxruntime-rs"
