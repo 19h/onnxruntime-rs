@@ -2,10 +2,7 @@
 authors = ["Nicolas Bigaouette <nbigaouette@gmail.com>", "Kenan Sulayman <kenan@sly.mn>"]
 name = "onnxruntime-ng"
 edition = "2021"
-version = "1.15.1"
-
-[lib]
-crate-type = ["rlib"]
+version = "1.16.1"
 
 description = "Wrapper around Microsoft's ONNX Runtime"
 documentation = "https://docs.rs/onnxruntime"
@@ -17,12 +14,15 @@ repository = "https://github.com/nbigaouette/onnxruntime-rs"
 categories = ["science"]
 keywords = ["neuralnetworks", "onnx", "bindings"]
 
+[lib]
+crate-type = ["rlib"]
+
 [[test]]
 name = "integration_tests"
 required-features = ["model-fetching"]
 
 [dependencies]
-onnxruntime-sys-ng = { version = "1.15.1", path = "../onnxruntime-sys-ng" }
+onnxruntime-sys-ng = { version = "1.16.1", path = "../onnxruntime-sys-ng" }
 
 lazy_static = "^1.4"
 ndarray = "^0.15"
