@@ -2,7 +2,7 @@
 authors = ["Nicolas Bigaouette <nbigaouette@gmail.com>", "Kenan Sulayman <kenan@sly.mn>"]
 edition = "2021"
 name = "onnxruntime-sys-ng"
-version = "1.15.1"
+version = "1.16.1"
 
 description = "Unsafe wrapper around Microsoft's ONNX Runtime"
 documentation = "https://docs.rs/onnxruntime-sys"
